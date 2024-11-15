@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="singnup.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form action="submit.php" method="POST">
+            <label for="username">name:</label>
+            <input type="text" id="name" name="name" maxlength="10"><br><br>
+            <label for="username">username:</label>
+            <input type="text" id="username" name="username" maxlength="10"><br><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" maxlength="10" minlength="10"><br><br>
+            
+            <label for="password">Password:</label> 
+            <input type="password" id="password" name="password" maxlength="6"><br><br>
+            
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" maxlength="6"><br><br>
+            
+            <input type="submit" value="submit"><br>
+            <a href="login.html" class= "colorforsignuppageAlreadyhaveanaccount">Already have an account?</a> 
+        </form>
+    </div>
+    <script>
+        const form = document.querySelector('form');
+        const usernameInput = document.querySelector('#username');
+        const emailInput = document.querySelector('#email');
+        const phoneInput = document.querySelector('#phone');
+        const passwordInput = document.querySelector('#password');
+        const confirmPasswordInput = document.querySelector('#confirm-password');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const password = passwordInput.value.trim();
+            const confirmPassword = confirmPasswordInput.value.trim();
+
+            // Validate username
+            if (username === '') {
+                alert('Username is required');
+                return;
+            }
+            if (username.length > 10) {
+                alert('Username must not exceed 10 characters');
+                return;
+            }
+
+            // Validate email
+            if (email === '') {
+                alert('Email is required');
+                return;
+            }
+            if (!email.includes('.')) {
+                alert('Email must contain a dot (.)');
+                return;
+            }
+
+            // Validate phone
+            if (phone === '') {
+                alert('Phone number is required');
+                return;
+            }
+            if (phone.length !== 10) {
+                alert('Phone number must be exactly 10 digits');
+                return;
+            }
+
+            // Validate password
+            if (password === '') {
+                alert('Password is required');
+                return;
+            }
+            if (password.length > 6) {
+                alert('Password must not exceed 6 characters');
+                return;
+            }
+            if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password)) {
+                alert('Password must contain at least one special character');
+                return;
+            }
+
+            // Validate confirm password
+            if (confirmPassword === '') {
+                alert('Confirm Password is required');
+                return;
+            }
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            // If all validations pass, submit the form
+            form.submit();
+        });
+    </script>
+</body>
+</html>

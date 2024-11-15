@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+    <style>
+      a{
+        color: white;
+      }
+    </style>
+</head>
+<body>
+
+  
+    <h1 class="firstheading">LIBRARY MANGEMENT SYSTEM</h1>
+    <div class="container">
+      
+        <h1>Login</h1>
+        <form action="main.html"> 
+           
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" maxlength="10"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" maxlength="6"><br><br>
+                <input type="submit" value="Login">
+             
+            <a  href="sinup.html" >i dont have a exiting account</a>
+           <script>
+           const form = document.querySelector('form');
+const usernameInput = document.querySelector('#username');
+const passwordInput = document.querySelector('#password');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  // Validate username
+  if (username === '') {
+    alert('Username is required');
+    return;
+  }
+  if (username.length > 10) {
+    alert('Username must not exceed 10 characters');
+    return;
+  }
+
+  // Validate password
+  if (password === '') {
+    alert('Password is required');
+    return;
+  }
+  if (password.length > 6) {
+    alert('Password must not exceed 6 characters');
+    return;
+  }
+  if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password)) {
+    alert('Password must contain at least one special character');
+    return;
+  }
+
+  // If all validations pass, submit the form
+  form.submit();
+});</script>
+            
+        </form>
+        
+</body>
+</html>
