@@ -15,7 +15,7 @@
   .card {
     position: relative;
     margin: 20px;
-    width: 200px;
+    width: 201px;
     height: 300px;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -374,4 +374,5 @@ input[type="submit"]:hover {
     }
     .social-links a:hover {
       color: #2200ffdb;
+
     }
